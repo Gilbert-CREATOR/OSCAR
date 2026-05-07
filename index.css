@@ -45,9 +45,9 @@ body {
 }
 
 .logo img {
-    height: 60px;
+    height: 80px;
     width: auto;
-    max-width: 200px;
+    max-width: 250px;
     object-fit: contain;
     filter: brightness(1.1) contrast(1.1);
     transition: all 0.3s ease;
