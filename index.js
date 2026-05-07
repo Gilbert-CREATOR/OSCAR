@@ -1,12 +1,13 @@
 // Menú móvil funcional
 const menuToggle = document.getElementById("menu-toggle");
 const nav = document.getElementById("nav");
+const navUl = nav.querySelector("ul");
 
 menuToggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
+    navUl.classList.toggle("active");
     
     // Animar el ícono del menú
-    if (nav.classList.contains("active")) {
+    if (navUl.classList.contains("active")) {
         menuToggle.innerHTML = "✕";
         menuToggle.style.fontSize = "28px";
     } else {
@@ -19,7 +20,7 @@ menuToggle.addEventListener("click", () => {
 const navLinks = document.querySelectorAll("nav ul li a");
 navLinks.forEach(link => {
     link.addEventListener("click", () => {
-        nav.classList.remove("active");
+        navUl.classList.remove("active");
         menuToggle.innerHTML = "&#9776;";
         menuToggle.style.fontSize = "24px";
     });
