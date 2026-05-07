@@ -1,30 +1,3 @@
-// Menú móvil funcional
-const menuToggle = document.getElementById("menu-toggle");
-const nav = document.getElementById("nav");
-const navUl = nav.querySelector("ul");
-
-menuToggle.addEventListener("click", () => {
-    navUl.classList.toggle("active");
-    
-    // Animar el ícono del menú
-    if (navUl.classList.contains("active")) {
-        menuToggle.innerHTML = "✕";
-        menuToggle.style.fontSize = "28px";
-    } else {
-        menuToggle.innerHTML = "&#9776;";
-        menuToggle.style.fontSize = "24px";
-    }
-});
-
-// Cerrar menú al hacer clic en un enlace
-const navLinks = document.querySelectorAll("nav ul li a");
-navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        navUl.classList.remove("active");
-        menuToggle.innerHTML = "&#9776;";
-        menuToggle.style.fontSize = "24px";
-    });
-});
 
 // Animaciones al scroll
 const observerOptions = {
