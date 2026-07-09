@@ -2,116 +2,246 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Dr. Oscar Mieses | Cirugía Oral y Maxilofacial</title>
+    <title>Dr. Oscar Mieses | Cirugia Oral y Maxilofacial</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Especialista en Cirugía Oral y Maxilofacial con enfoque en precisión, seguridad y tecnología avanzada.">
+    <meta name="description" content="Especialista en Cirugia Oral y Maxilofacial con atencion precisa, segura y planificacion avanzada.">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-<header class="header">
+<header class="site-header">
     <div class="container nav">
-        <div class="logo">
-            <img src="logo.png" alt="Logo de Dr. Oscar Mieses" width="250" height="80">
-        </div>
+        <a class="brand" href="#inicio" aria-label="Inicio">
+            <img src="logo.png" alt="Logo de Dr. Oscar Mieses" width="72" height="48">
+            <span>Dr. Oscar Mieses</span>
+        </a>
 
-        <nav id="nav">
+        <nav aria-label="Navegacion principal">
             <ul>
-                <li><a href="#hero-text">Sobre</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#experiencia">Experiencia</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
+
+        <a class="nav-cta" href="https://wa.me/18295643110" target="_blank" rel="noopener">Agendar</a>
     </div>
 </header>
 
-<section class="hero">
-    <div class="container hero-content">
-        
-        <div class="hero-text">
-            <h2>Cirugía Oral y Maxilofacial</h2>
-            <p>
-                Atención especializada combinando experiencia clínica,
-                tecnología avanzada y protocolos de seguridad rigurosos.
-            </p>
-        </div>
-
-        <div class="hero-image">
-            <img src="FOTO-OSCAR.jpeg" alt="Dr. Oscar Mieses - Cirujano Oral y Maxilofacial" width="280" height="280">
-        </div>
-
-    </div>
-</section>
-
-<section id="about" class="section">
-    <div class="container">
-        <h2>Sobre el Especialista</h2>
-        
-        <p>
-            El Dr. Oscar Mieses es especialista en Cirugía Oral y Maxilofacial,
-            con formación clínica y experiencia en centros hospitalarios de referencia.
-        </p>
-
-        <div class="credentials">
-            <h3>Formación y Experiencia</h3>
-            <ul>
-                <li>Hospital Dr. Darío Contreras</li>
-                <li>AO CMF Fellowship</li>
-            </ul>
-
-            <h3>Centros donde ofrece servicios</h3>
-            <ul>
-                <li>Villa Gonzalez – Centro De Especialidades Médicas Dr. Estrella</li>
-                <li>Bonao – Clínica San Antonio de Padua</li>
-                <li>Santiago – Hospital Especializada En Medicina (HEMMI)</li>
-                <li>La Vega – SEMED</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section id="services" class="section alt-bg">
-    <div class="container">
-        <br><br>
-        <div class="qsy"> <h2>Servicios</h2> </div>
-
-        <div class="services-grid">
-            
-            <div class="card">
-                <h3>Extracción de terceros molares</h3>
-                <p>Procedimientos quirúrgicos controlados y mínimamente invasivos.</p>
+<main>
+    <section id="inicio" class="hero">
+        <div class="container hero-card">
+            <div class="hero-line hero-line-one"></div>
+            <div class="hero-line hero-line-two"></div>
+            <div class="hero-copy">
+                <p class="eyebrow">Cirugia Oral y Maxilofacial</p>
+                <h1>Alcanza tu mejor version de <span>salud</span></h1>
+                <p class="hero-lede">
+                    Procedimientos quirurgicos con precision, planificacion digital y protocolos de seguridad para tu salud facial y oral.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="https://wa.me/18295643110" target="_blank" rel="noopener">Hacer una cita</a>
+                    <a class="btn-secondary" href="#servicios">Ver servicios</a>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>Implantes dentales</h3>
-                <p>Rehabilitación oral con planificación digital avanzada.</p>
+            <div class="hero-visual" aria-label="Retrato del Dr. Oscar Mieses">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <img src="doctor-cutout.png" alt="Dr. Oscar Mieses con bata medica" width="887" height="1774">
+
+                <div class="float-card stat-card">
+                    <strong>3+</strong>
+                    <span>Anos de experiencia</span>
+                </div>
+
+                <div class="float-card patient-card">
+                    <div class="avatar-row" aria-hidden="true">
+                        <img src="patient-1.png" alt="" width="34" height="34">
+                        <img src="patient-2.png" alt="" width="34" height="34">
+                        <img src="patient-3.png" alt="" width="34" height="34">
+                        <img src="patient-4.png" alt="" width="34" height="34">
+                    </div>
+                    <strong>Atencion segura</strong>
+                    <span>Pacientes satisfechos</span>
+                </div>
+
+                <div class="float-card date-card">
+                    <strong>Consulta</strong>
+                    <span>Agenda por WhatsApp</span>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>Cirugía ortognática</h3>
-                <p>Corrección de alteraciones óseas maxilofaciales complejas.</p>
+            <aside class="hero-quote" aria-label="Mensaje del especialista">
+                <span class="quote-mark">"</span>
+                <p>Estoy aqui para guiarte con un cuidado claro, seguro y personalizado en cada etapa de tu tratamiento.</p>
+                <strong>Dr. Oscar Mieses</strong>
+            </aside>
+        </div>
+    </section>
+
+    <section id="servicios" class="section services-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Nuestros servicios</p>
+                <h2>Soluciones quirurgicas para cada necesidad</h2>
             </div>
 
-            <div class="card">
-                <h3>Trastornos de la ATM</h3>
-                <p>Diagnóstico integral y tratamiento especializado.</p>
+            <div class="services-grid">
+                <article class="service-card">
+                    <span class="service-icon">+</span>
+                    <h3>Extraccion de terceros molares</h3>
+                    <p>Procedimientos controlados con enfoque minimamente invasivo.</p>
+                </article>
+
+                <article class="service-card">
+                    <span class="service-icon">ID</span>
+                    <h3>Implantes dentales</h3>
+                    <p>Rehabilitacion oral con evaluacion clinica y planificacion digital.</p>
+                </article>
+
+                <article class="service-card">
+                    <span class="service-icon">CM</span>
+                    <h3>Cirugia ortognatica</h3>
+                    <p>Correccion de alteraciones oseas maxilofaciales complejas.</p>
+                </article>
+
+                <article class="service-card">
+                    <span class="service-icon">ATM</span>
+                    <h3>Trastornos de la ATM</h3>
+                    <p>Diagnostico integral y tratamiento especializado de la articulacion.</p>
+                </article>
             </div>
         </div>
-    </div>
-    <br>
-</section>
+    </section>
 
-<section id="contact" class="section">
-    <div class="container">
-        <h2>Contacto</h2>
-        <p><strong>WhatsApp:</strong> +1 829 564 3110</p>
-        <p><strong>Email:</strong> Oscarmieses60@gmail.com</p>
-    </div>
-</section>
+    <section id="experiencia" class="section experience-section">
+        <div class="container split-layout">
+            <div class="portrait-panel">
+                <img src="FOTO-OSCAR.jpeg" alt="Dr. Oscar Mieses en consulta" width="1024" height="1280">
+                <div class="blue-badge">
+                    <strong>CMF</strong>
+                    <span>Fellowship</span>
+                </div>
+            </div>
+
+            <div class="content-panel">
+                <p class="eyebrow">Formacion y experiencia</p>
+                <h2>Atencion especializada con criterio hospitalario</h2>
+                <p>
+                    El Dr. Oscar Mieses es especialista en Cirugia Oral y Maxilofacial, con formacion clinica y experiencia en centros hospitalarios de referencia.
+                </p>
+
+                <div class="timeline">
+                    <div>
+                        <span></span>
+                        <p>Hospital Dr. Dario Contreras</p>
+                    </div>
+                    <div>
+                        <span></span>
+                        <p>AO CMF Fellowship</p>
+                    </div>
+                    <div>
+                        <span></span>
+                        <p>Protocolos de seguridad y planificacion avanzada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section locations-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Centros de atencion</p>
+                <h2>Disponible en varias ciudades</h2>
+            </div>
+
+            <div class="locations-grid">
+                <article>
+                    <h3>Villa Gonzalez</h3>
+                    <p>Centro De Especialidades Medicas Dr. Estrella</p>
+                </article>
+                <article>
+                    <h3>Bonao</h3>
+                    <p>Clinica San Antonio de Padua</p>
+                </article>
+                <article>
+                    <h3>Santiago</h3>
+                    <p>Hospital Especializada En Medicina (HEMMI)</p>
+                </article>
+                <article>
+                    <h3>La Vega</h3>
+                    <p>SEMED</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="section testimonials-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Testimonios</p>
+                <h2>Lo que dicen los pacientes</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <article class="testimonial-card featured-testimonial">
+                    <div class="testimonial-profile">
+                        <img src="patient-1.png" alt="Paciente satisfecha" width="56" height="56">
+                        <div>
+                            <h3>Maria Fernanda</h3>
+                            <span>Extraccion de terceros molares</span>
+                        </div>
+                    </div>
+                    <p>Me explicaron todo antes del procedimiento y el seguimiento fue excelente. Me senti tranquila desde la primera consulta.</p>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="testimonial-profile">
+                        <img src="patient-2.png" alt="Paciente satisfecho" width="56" height="56">
+                        <div>
+                            <h3>Carlos M.</h3>
+                            <span>Implantes dentales</span>
+                        </div>
+                    </div>
+                    <p>Muy profesional, puntual y claro con cada paso del tratamiento. El resultado supero mis expectativas.</p>
+                </article>
+
+                <article class="testimonial-card">
+                    <div class="testimonial-profile">
+                        <img src="patient-3.png" alt="Paciente satisfecha" width="56" height="56">
+                        <div>
+                            <h3>Rosa Almonte</h3>
+                            <span>Evaluacion maxilofacial</span>
+                        </div>
+                    </div>
+                    <p>La atencion fue humana y cuidadosa. Sali con un plan claro y con mucha confianza.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <div class="container contact-card">
+            <div>
+                <p class="eyebrow">Agenda tu consulta</p>
+                <h2>Hablemos de tu caso</h2>
+                <p>Recibe orientacion para elegir el procedimiento y centro de atencion adecuado.</p>
+            </div>
+            <div class="contact-actions">
+                <a class="btn-primary" href="https://wa.me/18295643110" target="_blank" rel="noopener">WhatsApp</a>
+                <a class="btn-secondary light" href="mailto:Oscarmieses60@gmail.com">Email</a>
+            </div>
+        </div>
+    </section>
+</main>
 
 <footer>
     <div class="container">
-        <p>© 2026 Dr. Oscar Mieses | Cirugía Oral y Maxilofacial</p>
+        <p>&copy; 2026 Dr. Oscar Mieses | Cirugia Oral y Maxilofacial</p>
     </div>
 </footer>
 

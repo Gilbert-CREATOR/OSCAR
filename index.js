@@ -1,57 +1,42 @@
-
-// Animaciones al scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+const header = document.querySelector('.site-header');
+const animatedElements = document.querySelectorAll(
+    '.hero-copy, .hero-visual, .hero-quote, .service-card, .portrait-panel, .content-panel, .locations-grid article, .testimonial-card, .contact-card'
+);
 
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
-
-// Observar elementos para animar
-document.addEventListener('DOMContentLoaded', () => {
-    const elementsToAnimate = document.querySelectorAll('.section, .card, .credentials');
-    
-    elementsToAnimate.forEach(el => {
-        el.classList.add('fade-in');
-        observer.observe(el);
-    });
-    
-    // Animar cards con retraso escalonado
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-    });
+}, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
 });
 
-// Smooth scroll mejorado
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const headerOffset = 80;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+animatedElements.forEach((element, index) => {
+    element.classList.add('fade-in');
+    element.style.transitionDelay = `${Math.min(index * 60, 240)}ms`;
+    observer.observe(element);
+});
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (event) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+
+        if (!target) {
+            return;
         }
-    });
-});
 
-// Efecto parallax sutil en el hero
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
+        event.preventDefault();
+
+        const headerOffset = header ? header.offsetHeight + 14 : 0;
+        const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+        window.scrollTo({
+            top: targetTop,
+            behavior: 'smooth'
+        });
+    });
 });
