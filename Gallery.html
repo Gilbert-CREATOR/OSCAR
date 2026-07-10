@@ -52,13 +52,20 @@
                 </div>
             </div>
 
-            <div>
+            <div class="case-gallery">
                 <div class="photo-rail" aria-label="Fotos del caso 01">
-                    <div class="case-photo"><span><strong>Foto 1</strong><small>Antes / evaluacion inicial</small></span></div>
-                    <div class="case-photo"><span><strong>Foto 2</strong><small>Durante planificacion</small></span></div>
-                    <div class="case-photo"><span><strong>Foto 3</strong><small>Resultado / control</small></span></div>
+                    <div class="case-photo">
+                        <img src="casos/IMG_6731.jpg" alt="Caso 01 - foto clinica 1">
+                    </div>
+                    <div class="case-photo">
+                        <img src="casos/IMG_6732.jpg" alt="Caso 01 - foto clinica 2">
+                    </div>
                 </div>
-                <p class="photo-hint">Desliza horizontalmente para ver mas fotos del mismo caso</p>
+                <p class="photo-hint">
+                    <span class="hint-mark" aria-hidden="true"></span>
+                    <span class="hint-desktop">Scroll horizontal para ver mas fotos del mismo caso</span>
+                    <span class="hint-mobile">Desliza las fotos hacia la izquierda</span>
+                </p>
             </div>
         </section>
 
@@ -77,14 +84,18 @@
                 </div>
             </div>
 
-            <div>
+            <div class="case-gallery">
                 <div class="photo-rail" aria-label="Fotos del caso 02">
                     <div class="case-photo"><span><strong>Foto 1</strong><small>Radiografia / diagnostico</small></span></div>
                     <div class="case-photo"><span><strong>Foto 2</strong><small>Zona quirurgica</small></span></div>
                     <div class="case-photo"><span><strong>Foto 3</strong><small>Recuperacion</small></span></div>
                     <div class="case-photo"><span><strong>Foto 4</strong><small>Control final</small></span></div>
                 </div>
-                <p class="photo-hint">Scroll vertical cambia de caso</p>
+                <p class="photo-hint">
+                    <span class="hint-mark" aria-hidden="true"></span>
+                    <span class="hint-desktop">Scroll horizontal para ver fotos, scroll vertical cambia de caso</span>
+                    <span class="hint-mobile">Desliza las fotos hacia la izquierda</span>
+                </p>
             </div>
         </section>
 
@@ -103,13 +114,17 @@
                 </div>
             </div>
 
-            <div>
+            <div class="case-gallery">
                 <div class="photo-rail" aria-label="Fotos del caso 03">
                     <div class="case-photo"><span><strong>Foto 1</strong><small>Estado inicial</small></span></div>
                     <div class="case-photo"><span><strong>Foto 2</strong><small>Procedimiento</small></span></div>
                     <div class="case-photo"><span><strong>Foto 3</strong><small>Resultado</small></span></div>
                 </div>
-                <p class="photo-hint">Cada paciente puede tener tantas fotos como necesites</p>
+                <p class="photo-hint">
+                    <span class="hint-mark" aria-hidden="true"></span>
+                    <span class="hint-desktop">Scroll horizontal para ver mas fotos del mismo caso</span>
+                    <span class="hint-mobile">Desliza las fotos hacia la izquierda</span>
+                </p>
             </div>
         </section>
     </main>
@@ -127,7 +142,9 @@
         const caseDots = Array.from(document.querySelectorAll('.case-dot'));
         let activeCase = 0;
         let isChangingCase = false;
+        let touchStartX = 0;
         let touchStartY = 0;
+        let touchStartedOnRail = false;
 
         function setActiveCase(index) {
             const nextIndex = Math.max(0, Math.min(index, caseScreens.length - 1));
@@ -150,7 +167,7 @@
 
             window.setTimeout(() => {
                 isChangingCase = false;
-            }, 680);
+            }, 960);
         }
 
         function handleCaseWheel(event) {
@@ -189,11 +206,19 @@
         window.addEventListener('keydown', handleKeydown);
 
         window.addEventListener('touchstart', (event) => {
+            touchStartX = event.touches[0].clientX;
             touchStartY = event.touches[0].clientY;
+            touchStartedOnRail = Boolean(event.target.closest('.photo-rail'));
         }, { passive: true });
 
         window.addEventListener('touchend', (event) => {
+            if (touchStartedOnRail) {
+                return;
+            }
+
+            const touchEndX = event.changedTouches[0].clientX;
             const touchEndY = event.changedTouches[0].clientY;
+            const deltaX = touchStartX - touchEndX;
             const deltaY = touchStartY - touchEndY;
 
             if (Math.abs(deltaY) > 48) {
@@ -201,12 +226,7 @@
             }
         }, { passive: true });
 
-        if (sessionStorage.getItem('caseGalleryAccepted') === 'true') {
-            ageGate.classList.add('is-hidden');
-        }
-
         enterGallery.addEventListener('click', () => {
-            sessionStorage.setItem('caseGalleryAccepted', 'true');
             ageGate.classList.add('is-hidden');
         });
     </script>

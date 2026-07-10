@@ -844,38 +844,52 @@ footer {
     }
 
     .nav {
-        min-height: 78px;
-        flex-wrap: nowrap;
-        gap: 7px;
-        padding: 0;
+        min-height: 128px;
+        align-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 10px 0 14px;
     }
 
     .brand {
-        gap: 5px;
-        flex: 0 0 auto;
+        width: 100%;
+        gap: 10px;
+        flex: 0 0 100%;
     }
 
     .brand span {
-        display: none;
+        display: inline;
+        color: var(--navy);
+        font-size: clamp(15px, 4.8vw, 19px);
+        font-weight: 900;
+        line-height: 1;
+        white-space: nowrap;
     }
 
     .brand img {
-        width: 56px;
-        height: 48px;
+        width: 70px;
+        height: 54px;
     }
 
     nav {
         order: initial;
         min-width: 0;
-        width: auto;
-        flex: 1;
+        width: 100%;
+        flex: 0 0 100%;
     }
 
     nav ul {
-        justify-content: center;
-        gap: 7px;
-        overflow: hidden;
-        padding: 0;
+        justify-content: flex-start;
+        gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0 0 2px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    nav ul::-webkit-scrollbar {
+        display: none;
     }
 
     nav ul li:last-child {
@@ -883,11 +897,16 @@ footer {
     }
 
     nav a {
-        padding: 0;
-        background: transparent;
+        display: inline-flex;
+        min-height: 36px;
+        align-items: center;
+        padding: 0 14px;
+        background: #eef7ff;
         color: #26384d;
-        font-size: 7px;
-        border-radius: 0;
+        font-size: 12px;
+        font-weight: 900;
+        border-radius: 999px;
+        white-space: nowrap;
     }
 
     .nav-cta {
@@ -1070,6 +1089,30 @@ footer {
 }
 
 @media (max-width: 390px) {
+    .nav {
+        min-height: 122px;
+        gap: 10px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .brand img {
+        width: 64px;
+        height: 50px;
+    }
+
+    .brand span {
+        font-size: 15px;
+    }
+
+    nav a {
+        min-height: 34px;
+        padding: 0 12px;
+        font-size: 11px;
+    }
+
     .hero {
         min-height: 505px;
     }

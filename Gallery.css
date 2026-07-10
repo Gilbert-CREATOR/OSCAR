@@ -112,7 +112,7 @@ a {
         radial-gradient(circle at 12% 20%, rgba(8, 102, 216, 0.1), transparent 22%),
         linear-gradient(180deg, #f8fbff 0%, #edf6ff 100%);
     transform: translateY(100%);
-    transition: opacity 520ms ease, transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 760ms ease, transform 920ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .case-screen:nth-child(even) {
@@ -158,6 +158,7 @@ a {
 
 .case-info {
     max-width: 430px;
+    min-width: 0;
 }
 
 .eyebrow {
@@ -202,31 +203,67 @@ a {
 }
 
 .photo-rail {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(72%, 1fr);
+    display: flex;
     gap: 18px;
-    overflow-x: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
     padding: 18px;
+    height: min(62vh, 560px);
     border: 1px solid var(--line);
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.72);
     box-shadow: var(--shadow);
     scroll-snap-type: x mandatory;
+    touch-action: pan-x;
     scrollbar-width: thin;
 }
 
+.case-gallery {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.case-gallery::after {
+    content: "";
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    width: 42px;
+    height: 42px;
+    border-right: 3px solid rgba(8, 102, 216, 0.64);
+    border-bottom: 3px solid rgba(8, 102, 216, 0.64);
+    pointer-events: none;
+    transform: translateY(-50%) rotate(-45deg);
+    animation: horizontalNudge 1.35s ease-in-out infinite;
+}
+
 .case-photo {
-    min-height: min(62vh, 560px);
+    flex: 0 0 clamp(300px, 34vw, 430px);
+    height: 100%;
+    min-height: 0;
     display: grid;
     place-items: center;
     overflow: hidden;
+    padding: 16px;
     border-radius: 10px;
     background:
         linear-gradient(135deg, rgba(7, 24, 51, 0.82), rgba(8, 102, 216, 0.74)),
         var(--navy);
     color: var(--white);
     scroll-snap-align: center;
+}
+
+.case-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #fff;
 }
 
 .case-photo span {
@@ -248,11 +285,79 @@ a {
 }
 
 .photo-hint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
     color: var(--muted);
     font-size: 13px;
     font-weight: 800;
     margin-top: 12px;
     text-align: right;
+}
+
+.hint-mobile {
+    display: none;
+}
+
+.hint-mark {
+    position: relative;
+    width: 42px;
+    height: 20px;
+    display: inline-block;
+    flex: 0 0 auto;
+}
+
+.hint-mark::before,
+.hint-mark::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hint-mark::before {
+    left: 0;
+    width: 34px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(8, 102, 216, 0.45);
+}
+
+.hint-mark::after {
+    right: 0;
+    width: 9px;
+    height: 9px;
+    border-top: 2px solid rgba(8, 102, 216, 0.62);
+    border-right: 2px solid rgba(8, 102, 216, 0.62);
+    transform: translateY(-50%) rotate(45deg);
+    animation: hintSlide 1.2s ease-in-out infinite;
+}
+
+@keyframes hintSlide {
+    0%,
+    100% {
+        translate: -8px 0;
+        opacity: 0.45;
+    }
+
+    50% {
+        translate: 2px 0;
+        opacity: 1;
+    }
+}
+
+@keyframes horizontalNudge {
+    0%,
+    100% {
+        translate: 0 0;
+        opacity: 0.18;
+    }
+
+    50% {
+        translate: 12px 0;
+        opacity: 0.78;
+    }
 }
 
 .age-gate {
@@ -334,40 +439,95 @@ a {
 
     .case-screen {
         grid-template-columns: 1fr;
-        align-content: center;
-        gap: 24px;
-        padding: 92px 16px 34px;
+        grid-template-rows: auto minmax(0, 1fr);
+        align-content: start;
+        gap: 14px;
+        min-height: 100svh;
+        padding: 86px 16px 18px;
+        overflow: hidden;
     }
 
     .case-info {
+        width: 100%;
         max-width: none;
+        min-width: 0;
     }
 
     .case-info h1,
     .case-info h2 {
-        font-size: 34px;
+        max-width: 100%;
+        font-size: clamp(28px, 9vw, 34px);
+        overflow-wrap: break-word;
+        text-wrap: balance;
     }
 
     .case-info p {
-        font-size: 15px;
+        max-width: 100%;
+        font-size: 13px;
+        line-height: 1.45;
+        margin-top: 10px;
     }
 
     .case-meta {
         display: flex;
         flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .case-meta span {
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+
+    .case-gallery {
+        min-height: 0;
+        overflow: visible;
     }
 
     .photo-rail {
-        grid-auto-columns: 88%;
+        width: 100%;
+        max-width: 100%;
+        gap: 12px;
+        height: min(48svh, 390px);
         padding: 12px;
+        touch-action: pan-x;
+        scroll-snap-type: x mandatory;
     }
 
     .case-photo {
-        min-height: 380px;
+        flex-basis: min(68vw, 290px);
+        height: 100%;
+        padding: 12px;
+    }
+
+    .case-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
     .photo-hint {
+        justify-content: flex-start;
+        gap: 8px;
+        margin-top: 8px;
+        font-size: 11px;
         text-align: left;
+    }
+
+    .hint-desktop {
+        display: none;
+    }
+
+    .hint-mobile {
+        display: inline;
+    }
+
+    .case-gallery::after {
+        right: 16px;
+        top: 50%;
+        width: 34px;
+        height: 34px;
     }
 
     .case-dots {
