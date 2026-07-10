@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casos Clinicos | Dr. Oscar Mieses</title>
+    <meta name="description" content="Catalogo privado de casos clinicos del Dr. Oscar Mieses con advertencia de contenido sensible.">
+    <link rel="stylesheet" href="Gallery.css">
+</head>
+<body>
+    <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+        <div class="age-card">
+            <p class="eyebrow">Contenido sensible 18+</p>
+            <h2 id="ageTitle">Casos clinicos con imagenes quirurgicas</h2>
+            <p>
+                Esta galeria puede mostrar imagenes medicas fuertes de pacientes y procedimientos maxilofaciales.
+                Entra solo si eres mayor de edad y aceptas ver contenido clinico sensible.
+            </p>
+            <div class="age-actions">
+                <button class="pill pill-blue" id="enterGallery" type="button">Soy mayor de 18, entrar</button>
+                <a class="pill pill-outline" href="index.html">Volver al inicio</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="case-header">
+        <div class="case-nav">
+            <a class="brand" href="index.html" aria-label="Volver al inicio">
+                <img src="logo.png" alt="Logo de Dr. Oscar Mieses" width="72" height="48">
+                <span>Dr. Oscar Mieses</span>
+            </a>
+            <div class="case-nav-actions">
+                <a class="pill pill-outline" href="index.html">Inicio</a>
+                <a class="pill pill-blue" href="https://wa.me/18295643110" target="_blank" rel="noopener">Consulta</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="casesStage" aria-live="polite">
+        <section class="case-screen is-active" id="caso-1">
+            <div class="case-info">
+                <p class="eyebrow">Caso 01</p>
+                <h1>Reconstruccion maxilofacial</h1>
+                <p>
+                    Galeria de seguimiento clinico con imagenes organizadas por etapa del tratamiento.
+                    Sustituye estos espacios por las fotos reales del paciente cuando esten listas.
+                </p>
+                <div class="case-meta">
+                    <span>Diagnostico inicial</span>
+                    <span>Planificacion quirurgica</span>
+                    <span>Seguimiento postoperatorio</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="photo-rail" aria-label="Fotos del caso 01">
+                    <div class="case-photo"><span><strong>Foto 1</strong><small>Antes / evaluacion inicial</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 2</strong><small>Durante planificacion</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 3</strong><small>Resultado / control</small></span></div>
+                </div>
+                <p class="photo-hint">Desliza horizontalmente para ver mas fotos del mismo caso</p>
+            </div>
+        </section>
+
+        <section class="case-screen" id="caso-2">
+            <div class="case-info">
+                <p class="eyebrow">Caso 02</p>
+                <h2>Extraccion quirurgica compleja</h2>
+                <p>
+                    Registro visual de un procedimiento controlado, con descripcion breve para orientar
+                    al visitante sin mostrar todas las imagenes al mismo tiempo.
+                </p>
+                <div class="case-meta">
+                    <span>Terceros molares</span>
+                    <span>Cirugia ambulatoria</span>
+                    <span>Control de evolucion</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="photo-rail" aria-label="Fotos del caso 02">
+                    <div class="case-photo"><span><strong>Foto 1</strong><small>Radiografia / diagnostico</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 2</strong><small>Zona quirurgica</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 3</strong><small>Recuperacion</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 4</strong><small>Control final</small></span></div>
+                </div>
+                <p class="photo-hint">Scroll vertical cambia de caso</p>
+            </div>
+        </section>
+
+        <section class="case-screen" id="caso-3">
+            <div class="case-info">
+                <p class="eyebrow">Caso 03</p>
+                <h2>Trauma facial y seguimiento</h2>
+                <p>
+                    Caso reservado para documentar el proceso de evaluacion, tratamiento y seguimiento
+                    con varias imagenes por paciente en un carrusel independiente.
+                </p>
+                <div class="case-meta">
+                    <span>Trauma facial</span>
+                    <span>Tratamiento quirurgico</span>
+                    <span>Seguimiento clinico</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="photo-rail" aria-label="Fotos del caso 03">
+                    <div class="case-photo"><span><strong>Foto 1</strong><small>Estado inicial</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 2</strong><small>Procedimiento</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 3</strong><small>Resultado</small></span></div>
+                </div>
+                <p class="photo-hint">Cada paciente puede tener tantas fotos como necesites</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="case-dots" aria-label="Navegacion de casos">
+        <button class="case-dot is-active" type="button" aria-label="Ir al caso 1"></button>
+        <button class="case-dot" type="button" aria-label="Ir al caso 2"></button>
+        <button class="case-dot" type="button" aria-label="Ir al caso 3"></button>
+    </div>
+
+    <script>
+        const ageGate = document.getElementById('ageGate');
+        const enterGallery = document.getElementById('enterGallery');
+        const caseScreens = Array.from(document.querySelectorAll('.case-screen'));
+        const caseDots = Array.from(document.querySelectorAll('.case-dot'));
+        let activeCase = 0;
+        let isChangingCase = false;
+        let touchStartY = 0;
+
+        function setActiveCase(index) {
+            const nextIndex = Math.max(0, Math.min(index, caseScreens.length - 1));
+
+            if (nextIndex === activeCase) {
+                return;
+            }
+
+            activeCase = nextIndex;
+            isChangingCase = true;
+
+            caseScreens.forEach((screen, screenIndex) => {
+                screen.classList.toggle('is-active', screenIndex === activeCase);
+                screen.classList.toggle('is-before', screenIndex < activeCase);
+            });
+
+            caseDots.forEach((dot, dotIndex) => {
+                dot.classList.toggle('is-active', dotIndex === activeCase);
+            });
+
+            window.setTimeout(() => {
+                isChangingCase = false;
+            }, 680);
+        }
+
+        function handleCaseWheel(event) {
+            const isPhotoRail = event.target.closest('.photo-rail');
+
+            if (isPhotoRail && Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+                return;
+            }
+
+            event.preventDefault();
+
+            if (isChangingCase || Math.abs(event.deltaY) < 24) {
+                return;
+            }
+
+            setActiveCase(activeCase + (event.deltaY > 0 ? 1 : -1));
+        }
+
+        function handleKeydown(event) {
+            if (event.key === 'ArrowDown' || event.key === 'PageDown' || event.key === ' ') {
+                event.preventDefault();
+                setActiveCase(activeCase + 1);
+            }
+
+            if (event.key === 'ArrowUp' || event.key === 'PageUp') {
+                event.preventDefault();
+                setActiveCase(activeCase - 1);
+            }
+        }
+
+        caseDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => setActiveCase(index));
+        });
+
+        window.addEventListener('wheel', handleCaseWheel, { passive: false });
+        window.addEventListener('keydown', handleKeydown);
+
+        window.addEventListener('touchstart', (event) => {
+            touchStartY = event.touches[0].clientY;
+        }, { passive: true });
+
+        window.addEventListener('touchend', (event) => {
+            const touchEndY = event.changedTouches[0].clientY;
+            const deltaY = touchStartY - touchEndY;
+
+            if (Math.abs(deltaY) > 48) {
+                setActiveCase(activeCase + (deltaY > 0 ? 1 : -1));
+            }
+        }, { passive: true });
+
+        if (sessionStorage.getItem('caseGalleryAccepted') === 'true') {
+            ageGate.classList.add('is-hidden');
+        }
+
+        enterGallery.addEventListener('click', () => {
+            sessionStorage.setItem('caseGalleryAccepted', 'true');
+            ageGate.classList.add('is-hidden');
+        });
+    </script>
+</body>
+</html>

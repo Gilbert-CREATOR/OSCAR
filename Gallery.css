@@ -1,0 +1,376 @@
+:root {
+    --navy: #071833;
+    --blue: #0866d8;
+    --blue-dark: #034ba4;
+    --sky: #eaf4ff;
+    --muted: #637083;
+    --line: #d9e7f6;
+    --white: #ffffff;
+    --shadow: 0 22px 60px rgba(8, 42, 90, 0.14);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background: #f7fbff;
+    color: var(--navy);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.case-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(217, 231, 246, 0.88);
+    backdrop-filter: blur(18px);
+}
+
+.case-nav {
+    width: min(1180px, calc(100% - 32px));
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin: 0 auto;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
+}
+
+.brand img {
+    width: 54px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.case-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pill {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.pill-outline {
+    border: 1px solid var(--line);
+    background: var(--white);
+}
+
+.pill-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 14px 30px rgba(8, 102, 216, 0.22);
+}
+
+.case-screen {
+    position: fixed;
+    inset: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+    align-items: center;
+    gap: clamp(28px, 6vw, 82px);
+    opacity: 0;
+    pointer-events: none;
+    padding: 110px max(22px, calc((100vw - 1180px) / 2)) 42px;
+    background:
+        radial-gradient(circle at 12% 20%, rgba(8, 102, 216, 0.1), transparent 22%),
+        linear-gradient(180deg, #f8fbff 0%, #edf6ff 100%);
+    transform: translateY(100%);
+    transition: opacity 520ms ease, transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.case-screen:nth-child(even) {
+    background:
+        radial-gradient(circle at 86% 18%, rgba(8, 102, 216, 0.09), transparent 24%),
+        linear-gradient(180deg, #ffffff 0%, #f4f9ff 100%);
+}
+
+.case-screen.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.case-screen.is-before {
+    transform: translateY(-100%);
+}
+
+.case-dots {
+    position: fixed;
+    right: 22px;
+    top: 50%;
+    z-index: 28;
+    display: grid;
+    gap: 10px;
+    transform: translateY(-50%);
+}
+
+.case-dot {
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(8, 102, 216, 0.45);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.78);
+    cursor: pointer;
+    padding: 0;
+}
+
+.case-dot.is-active {
+    background: var(--blue);
+    box-shadow: 0 0 0 6px rgba(8, 102, 216, 0.12);
+}
+
+.case-info {
+    max-width: 430px;
+}
+
+.eyebrow {
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 1000;
+    letter-spacing: 0.4px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.case-info h1,
+.case-info h2 {
+    color: var(--navy);
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.04;
+    letter-spacing: 0;
+}
+
+.case-info p {
+    color: #405067;
+    font-size: 17px;
+    margin-top: 18px;
+}
+
+.case-meta {
+    display: grid;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.case-meta span {
+    display: inline-flex;
+    width: fit-content;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.74);
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.photo-rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(72%, 1fr);
+    gap: 18px;
+    overflow-x: auto;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: var(--shadow);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.case-photo {
+    min-height: min(62vh, 560px);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    background:
+        linear-gradient(135deg, rgba(7, 24, 51, 0.82), rgba(8, 102, 216, 0.74)),
+        var(--navy);
+    color: var(--white);
+    scroll-snap-align: center;
+}
+
+.case-photo span {
+    display: grid;
+    gap: 8px;
+    padding: 26px;
+    text-align: center;
+}
+
+.case-photo strong {
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1;
+}
+
+.case-photo small {
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.photo-hint {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 800;
+    margin-top: 12px;
+    text-align: right;
+}
+
+.age-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 22px;
+    background: rgba(7, 24, 51, 0.74);
+    backdrop-filter: blur(18px);
+}
+
+.age-card {
+    width: min(560px, 100%);
+    padding: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
+.age-card h2 {
+    color: var(--navy);
+    font-size: clamp(30px, 5vw, 44px);
+    line-height: 1.08;
+}
+
+.age-card p {
+    color: var(--muted);
+    margin-top: 14px;
+}
+
+.age-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.age-actions button,
+.age-actions a {
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.is-hidden {
+    display: none;
+}
+
+@media (max-width: 760px) {
+    html {
+        overflow: hidden;
+    }
+
+    .case-nav {
+        min-height: 68px;
+    }
+
+    .brand span {
+        display: none;
+    }
+
+    .brand img {
+        width: 48px;
+        height: 38px;
+    }
+
+    .case-nav-actions {
+        gap: 8px;
+    }
+
+    .pill {
+        min-height: 38px;
+        padding: 0 14px;
+        font-size: 12px;
+    }
+
+    .case-screen {
+        grid-template-columns: 1fr;
+        align-content: center;
+        gap: 24px;
+        padding: 92px 16px 34px;
+    }
+
+    .case-info {
+        max-width: none;
+    }
+
+    .case-info h1,
+    .case-info h2 {
+        font-size: 34px;
+    }
+
+    .case-info p {
+        font-size: 15px;
+    }
+
+    .case-meta {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .photo-rail {
+        grid-auto-columns: 88%;
+        padding: 12px;
+    }
+
+    .case-photo {
+        min-height: 380px;
+    }
+
+    .photo-hint {
+        text-align: left;
+    }
+
+    .case-dots {
+        right: 12px;
+    }
+}

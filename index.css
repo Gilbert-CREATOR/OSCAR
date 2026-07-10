@@ -402,9 +402,13 @@ nav a:hover {
     margin: 18px 0 14px;
 }
 
-.hero-quote strong {
-    color: var(--navy);
+.hero-quote h6 {
+    color: var(--blue, #0866d8);
     font-size: 14px;
+}
+
+.hero-quote .quote-doctor-name {
+    color: var(--blue, #0866d8) !important;
 }
 
 .section {
@@ -856,8 +860,8 @@ footer {
     }
 
     .brand img {
-        width: 48px;
-        height: 40px;
+        width: 56px;
+        height: 48px;
     }
 
     nav {
@@ -869,7 +873,7 @@ footer {
 
     nav ul {
         justify-content: center;
-        gap: 8px;
+        gap: 7px;
         overflow: hidden;
         padding: 0;
     }
@@ -882,7 +886,7 @@ footer {
         padding: 0;
         background: transparent;
         color: #26384d;
-        font-size: 8px;
+        font-size: 7px;
         border-radius: 0;
     }
 
@@ -1030,9 +1034,13 @@ footer {
         margin: 6px 0 7px;
     }
 
-    .hero-quote strong {
-        color: var(--blue);
-        font-size: 8px;
+    .hero-quote h6 {
+        color: var(--blue, #0866d8);
+        font-size: 16px;
+    }
+
+    .hero-quote .quote-doctor-name {
+        color: var(--blue, #0866d8) !important;
     }
 
     .contact-actions {
