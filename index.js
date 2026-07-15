@@ -3,23 +3,27 @@ const animatedElements = document.querySelectorAll(
     '.hero-copy, .hero-visual, .hero-quote, .service-card, .portrait-panel, .content-panel, .locations-grid article, .testimonial-card, .contact-card'
 );
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-});
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-animatedElements.forEach((element, index) => {
-    element.classList.add('fade-in');
-    element.style.transitionDelay = `${Math.min(index * 60, 240)}ms`;
-    observer.observe(element);
-});
+if ('IntersectionObserver' in window && !reduceMotion) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    animatedElements.forEach((element, index) => {
+        element.classList.add('fade-in');
+        element.style.transitionDelay = `${Math.min(index * 60, 240)}ms`;
+        observer.observe(element);
+    });
+}
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (event) => {
@@ -36,7 +40,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
         window.scrollTo({
             top: targetTop,
-            behavior: 'smooth'
+            behavior: reduceMotion ? 'auto' : 'smooth'
         });
     });
 });

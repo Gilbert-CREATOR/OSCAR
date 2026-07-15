@@ -1,0 +1,16 @@
+# Archivos locales y configuración del editor
+.DS_Store
+.vscode/
+
+# Originales pesados no utilizados por el sitio publicado
+imagenes/Logos/logo.png
+imagenes/Pacientes/patient-1.png
+imagenes/Pacientes/patient-2.png
+imagenes/Pacientes/patient-3.png
+imagenes/Pacientes/patient-4.png
+imagenes/Doctor/FOTO-OSCAR-cutout.png
+imagenes/Doctor/FOTO-OSCAR2.jpg
+imagenes/Doctor/FOTO-OSCAR3.jpg
+imagenes/Doctor/FOTO-OSCAR4.jpg
+imagenes/Doctor/doctor-chroma.png
+imagenes/Doctor/doctor-cutout.png

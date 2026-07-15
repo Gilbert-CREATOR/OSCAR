@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casos Clinicos | Dr. Oscar Mieses</title>
-    <meta name="description" content="Catalogo privado de casos clinicos del Dr. Oscar Mieses con advertencia de contenido sensible.">
+    <title>Casos clínicos | Dr. Oscar Mieses</title>
+    <meta name="description" content="Catálogo de casos clínicos del Dr. Oscar Mieses con advertencia de contenido sensible.">
     <link rel="stylesheet" href="Gallery.css">
 </head>
 <body>
     <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
         <div class="age-card">
             <p class="eyebrow">Contenido sensible 18+</p>
-            <h2 id="ageTitle">Casos clinicos con imagenes quirurgicas</h2>
+            <h2 id="ageTitle">Casos clínicos con imágenes quirúrgicas</h2>
             <p>
-                Esta galeria puede mostrar imagenes medicas fuertes de pacientes y procedimientos maxilofaciales.
-                Entra solo si eres mayor de edad y aceptas ver contenido clinico sensible.
+                Esta galería puede mostrar imágenes médicas fuertes de pacientes y procedimientos maxilofaciales.
+                Entra solo si eres mayor de edad y aceptas ver contenido clínico sensible.
             </p>
             <div class="age-actions">
                 <button class="pill pill-blue" id="enterGallery" type="button">Soy mayor de 18, entrar</button>
@@ -23,10 +23,11 @@
         </div>
     </div>
 
+    <div id="galleryContent" inert aria-hidden="true">
     <header class="case-header">
         <div class="case-nav">
             <a class="brand" href="index.html" aria-label="Volver al inicio">
-                <img src="logo.png" alt="Logo de Dr. Oscar Mieses" width="72" height="48">
+                <img src="imagenes/Logos/logo-optimized.png" alt="Logo de Dr. Oscar Mieses" width="72" height="48">
                 <span>Dr. Oscar Mieses</span>
             </a>
             <div class="case-nav-actions">
@@ -36,18 +37,17 @@
         </div>
     </header>
 
-    <main id="casesStage" aria-live="polite">
+    <main id="casesStage">
         <section class="case-screen is-active" id="caso-1">
             <div class="case-info">
                 <p class="eyebrow">Caso 01</p>
-                <h1>Reconstruccion maxilofacial</h1>
+                <h1>Reconstrucción maxilofacial</h1>
                 <p>
-                    Galeria de seguimiento clinico con imagenes organizadas por etapa del tratamiento.
-                    Sustituye estos espacios por las fotos reales del paciente cuando esten listas.
+                    Seguimiento clínico organizado por etapas del tratamiento, desde el diagnóstico hasta el control postoperatorio.
                 </p>
                 <div class="case-meta">
-                    <span>Diagnostico inicial</span>
-                    <span>Planificacion quirurgica</span>
+                    <span>Diagnóstico inicial</span>
+                    <span>Planificación quirúrgica</span>
                     <span>Seguimiento postoperatorio</span>
                 </div>
             </div>
@@ -55,62 +55,62 @@
             <div class="case-gallery">
                 <div class="photo-rail" aria-label="Fotos del caso 01">
                     <div class="case-photo">
-                        <img src="casos/IMG_6731.jpg" alt="Caso 01 - foto clinica 1">
+                        <img data-src="imagenes/Casos/IMG_6731.jpg" alt="Caso 01 - foto clínica 1">
                     </div>
                     <div class="case-photo">
-                        <img src="casos/IMG_6732.jpg" alt="Caso 01 - foto clinica 2">
+                        <img data-src="imagenes/Casos/IMG_6732.jpg" alt="Caso 01 - foto clínica 2">
                     </div>
                 </div>
                 <p class="photo-hint">
                     <span class="hint-mark" aria-hidden="true"></span>
-                    <span class="hint-desktop">Scroll horizontal para ver mas fotos del mismo caso</span>
+                    <span class="hint-desktop">Desplázate horizontalmente para ver más fotos del mismo caso</span>
                     <span class="hint-mobile">Desliza las fotos hacia la izquierda</span>
                 </p>
             </div>
         </section>
 
-        <section class="case-screen" id="caso-2">
+        <section class="case-screen" id="caso-2" aria-hidden="true">
             <div class="case-info">
                 <p class="eyebrow">Caso 02</p>
-                <h2>Extraccion quirurgica compleja</h2>
+                <h2>Extracción quirúrgica compleja</h2>
                 <p>
-                    Registro visual de un procedimiento controlado, con descripcion breve para orientar
-                    al visitante sin mostrar todas las imagenes al mismo tiempo.
+                    Registro visual de un procedimiento controlado, con descripción breve para orientar
+                    al visitante sin mostrar todas las imágenes al mismo tiempo.
                 </p>
                 <div class="case-meta">
                     <span>Terceros molares</span>
-                    <span>Cirugia ambulatoria</span>
-                    <span>Control de evolucion</span>
+                    <span>Cirugía ambulatoria</span>
+                    <span>Control de evolución</span>
                 </div>
             </div>
 
             <div class="case-gallery">
                 <div class="photo-rail" aria-label="Fotos del caso 02">
-                    <div class="case-photo"><span><strong>Foto 1</strong><small>Radiografia / diagnostico</small></span></div>
-                    <div class="case-photo"><span><strong>Foto 2</strong><small>Zona quirurgica</small></span></div>
-                    <div class="case-photo"><span><strong>Foto 3</strong><small>Recuperacion</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 1</strong><small>Radiografía / diagnóstico</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 2</strong><small>Zona quirúrgica</small></span></div>
+                    <div class="case-photo"><span><strong>Foto 3</strong><small>Recuperación</small></span></div>
                     <div class="case-photo"><span><strong>Foto 4</strong><small>Control final</small></span></div>
                 </div>
                 <p class="photo-hint">
                     <span class="hint-mark" aria-hidden="true"></span>
-                    <span class="hint-desktop">Scroll horizontal para ver fotos, scroll vertical cambia de caso</span>
+                    <span class="hint-desktop">Desplazamiento horizontal para ver fotos; vertical para cambiar de caso</span>
                     <span class="hint-mobile">Desliza las fotos hacia la izquierda</span>
                 </p>
             </div>
         </section>
 
-        <section class="case-screen" id="caso-3">
+        <section class="case-screen" id="caso-3" aria-hidden="true">
             <div class="case-info">
                 <p class="eyebrow">Caso 03</p>
                 <h2>Trauma facial y seguimiento</h2>
                 <p>
-                    Caso reservado para documentar el proceso de evaluacion, tratamiento y seguimiento
-                    con varias imagenes por paciente en un carrusel independiente.
+                    Registro del proceso de evaluación, tratamiento y seguimiento
+                    con varias imágenes en un carrusel independiente.
                 </p>
                 <div class="case-meta">
                     <span>Trauma facial</span>
-                    <span>Tratamiento quirurgico</span>
-                    <span>Seguimiento clinico</span>
+                    <span>Tratamiento quirúrgico</span>
+                    <span>Seguimiento clínico</span>
                 </div>
             </div>
 
@@ -122,22 +122,24 @@
                 </div>
                 <p class="photo-hint">
                     <span class="hint-mark" aria-hidden="true"></span>
-                    <span class="hint-desktop">Scroll horizontal para ver mas fotos del mismo caso</span>
+                    <span class="hint-desktop">Desplázate horizontalmente para ver más fotos del mismo caso</span>
                     <span class="hint-mobile">Desliza las fotos hacia la izquierda</span>
                 </p>
             </div>
         </section>
     </main>
 
-    <div class="case-dots" aria-label="Navegacion de casos">
-        <button class="case-dot is-active" type="button" aria-label="Ir al caso 1"></button>
+    <div class="case-dots" aria-label="Navegación de casos">
+        <button class="case-dot is-active" type="button" aria-label="Ir al caso 1" aria-current="true"></button>
         <button class="case-dot" type="button" aria-label="Ir al caso 2"></button>
         <button class="case-dot" type="button" aria-label="Ir al caso 3"></button>
+    </div>
     </div>
 
     <script>
         const ageGate = document.getElementById('ageGate');
         const enterGallery = document.getElementById('enterGallery');
+        const galleryContent = document.getElementById('galleryContent');
         const caseScreens = Array.from(document.querySelectorAll('.case-screen'));
         const caseDots = Array.from(document.querySelectorAll('.case-dot'));
         let activeCase = 0;
@@ -145,6 +147,7 @@
         let touchStartX = 0;
         let touchStartY = 0;
         let touchStartedOnRail = false;
+        let galleryAccepted = false;
 
         function setActiveCase(index) {
             const nextIndex = Math.max(0, Math.min(index, caseScreens.length - 1));
@@ -159,18 +162,28 @@
             caseScreens.forEach((screen, screenIndex) => {
                 screen.classList.toggle('is-active', screenIndex === activeCase);
                 screen.classList.toggle('is-before', screenIndex < activeCase);
+                screen.setAttribute('aria-hidden', String(screenIndex !== activeCase));
             });
 
             caseDots.forEach((dot, dotIndex) => {
                 dot.classList.toggle('is-active', dotIndex === activeCase);
+                if (dotIndex === activeCase) {
+                    dot.setAttribute('aria-current', 'true');
+                } else {
+                    dot.removeAttribute('aria-current');
+                }
             });
 
             window.setTimeout(() => {
                 isChangingCase = false;
-            }, 960);
+            }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 960);
         }
 
         function handleCaseWheel(event) {
+            if (!galleryAccepted) {
+                return;
+            }
+
             const isPhotoRail = event.target.closest('.photo-rail');
 
             if (isPhotoRail && Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
@@ -187,6 +200,14 @@
         }
 
         function handleKeydown(event) {
+            if (!galleryAccepted) {
+                return;
+            }
+
+            if (event.target.closest('a, button, input, select, textarea, [contenteditable="true"]')) {
+                return;
+            }
+
             if (event.key === 'ArrowDown' || event.key === 'PageDown' || event.key === ' ') {
                 event.preventDefault();
                 setActiveCase(activeCase + 1);
@@ -212,7 +233,7 @@
         }, { passive: true });
 
         window.addEventListener('touchend', (event) => {
-            if (touchStartedOnRail) {
+            if (!galleryAccepted || touchStartedOnRail) {
                 return;
             }
 
@@ -226,9 +247,37 @@
             }
         }, { passive: true });
 
-        enterGallery.addEventListener('click', () => {
+        function openGallery() {
+            galleryAccepted = true;
+            document.querySelectorAll('img[data-src]').forEach((image) => {
+                image.src = image.dataset.src;
+                image.removeAttribute('data-src');
+            });
+            galleryContent.removeAttribute('inert');
+            galleryContent.removeAttribute('aria-hidden');
             ageGate.classList.add('is-hidden');
+            caseDots[0].focus();
+        }
+
+        enterGallery.addEventListener('click', openGallery);
+        ageGate.addEventListener('keydown', (event) => {
+            if (event.key !== 'Tab') {
+                return;
+            }
+
+            const controls = Array.from(ageGate.querySelectorAll('button, a[href]'));
+            const firstControl = controls[0];
+            const lastControl = controls[controls.length - 1];
+
+            if (event.shiftKey && document.activeElement === firstControl) {
+                event.preventDefault();
+                lastControl.focus();
+            } else if (!event.shiftKey && document.activeElement === lastControl) {
+                event.preventDefault();
+                firstControl.focus();
+            }
         });
+        enterGallery.focus();
     </script>
 </body>
 </html>
