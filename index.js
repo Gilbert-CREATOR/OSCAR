@@ -15,7 +15,7 @@ function closeBrandIntro() {
 
     window.setTimeout(() => {
         brandIntro.remove();
-    }, reduceMotion ? 0 : 700);
+    }, reduceMotion ? 0 : 950);
 }
 
 if (brandIntro) {
@@ -27,7 +27,7 @@ if (brandIntro) {
         closeBrandIntro();
     } else {
         introSkip.focus();
-        window.setTimeout(closeBrandIntro, 4300);
+        window.setTimeout(closeBrandIntro, 4900);
     }
 }
 
