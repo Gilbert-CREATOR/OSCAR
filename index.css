@@ -235,7 +235,7 @@ a {
 }
 
 .nav {
-    min-height: 82px;
+    min-height: 96px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -252,8 +252,8 @@ a {
 }
 
 .brand img {
-    width: 54px;
-    height: 42px;
+    width: 150px;
+    height: 76px;
     object-fit: contain;
 }
 
