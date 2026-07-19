@@ -39,22 +39,11 @@ body.intro-active {
     display: grid;
     place-items: center;
     overflow: hidden;
-    background:
-        radial-gradient(circle at 50% 45%, rgba(8, 102, 216, 0.2), transparent 32%),
-        #03070d;
+    background: #003049;
     color: #fff;
     opacity: 1;
     visibility: visible;
     transition: opacity 650ms ease, visibility 650ms ease;
-}
-
-.brand-intro::before {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.04) 50%, transparent 65%);
-    content: "";
-    transform: translateX(-100%);
-    animation: introLight 2.2s 800ms ease forwards;
 }
 
 .brand-intro.is-leaving {
@@ -65,68 +54,51 @@ body.intro-active {
 
 .intro-logo {
     position: relative;
-    width: min(720px, 92vw);
+    width: min(680px, 92vw);
 }
 
 .intro-emblem {
     position: relative;
-    display: grid;
-    min-height: min(62vw, 470px);
-    place-items: center;
-    isolation: isolate;
-}
-
-.intro-logo-image,
-.intro-logo-glow {
-    grid-area: 1 / 1;
     width: 100%;
-    max-height: 58vh;
+    aspect-ratio: 320 / 213;
+}
+
+.intro-part {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-}
-
-.intro-logo-image {
     opacity: 0;
-    clip-path: inset(0 100% 0 0);
-    filter: drop-shadow(0 0 16px rgba(14, 126, 217, 0.3));
-    animation: revealOfficialLogo 1.65s 380ms cubic-bezier(0.65, 0, 0.35, 1) forwards,
-        settleOfficialLogo 700ms 2.05s ease forwards;
+    filter: drop-shadow(0 0 8px rgba(0, 157, 220, 0.18));
 }
 
-.intro-logo-glow {
-    opacity: 0;
-    filter: blur(18px) saturate(1.5);
-    transform: scale(0.9);
-    animation: pulseOfficialLogo 1.4s 1.15s ease-out forwards;
+.intro-symbol {
+    clip-path: inset(0 100% 37% 0);
+    animation: formLogoSymbol 2.4s 180ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.intro-ring {
+.intro-signature {
+    clip-path: inset(56% 100% 12% 0);
+    animation: writeLogoSignature 2.55s 420ms cubic-bezier(0.42, 0, 0.2, 1) forwards;
+}
+
+.intro-specialty {
+    clip-path: inset(81% 100% 0 0);
+    animation: writeLogoSpecialty 1.3s 2.35s ease-out forwards;
+}
+
+.intro-pen {
     position: absolute;
-    z-index: -1;
-    width: min(430px, 62vw);
-    aspect-ratio: 1;
-    border: 1px solid rgba(20, 137, 224, 0.18);
+    left: 7%;
+    top: 71%;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
+    background: #008fc7;
+    box-shadow: 0 0 13px 4px rgba(0, 143, 199, 0.72);
     opacity: 0;
-    transform: scale(0.72);
-    animation: expandIntroRing 1.45s ease-out forwards;
-}
-
-.intro-ring-two {
-    width: min(560px, 78vw);
-    border-color: rgba(255, 255, 255, 0.08);
-    animation-delay: 280ms;
-}
-
-.intro-scan {
-    position: absolute;
-    left: 5%;
-    top: 14%;
-    width: 2px;
-    height: 72%;
-    background: linear-gradient(180deg, transparent, #68b9ff 25%, #fff 50%, #68b9ff 75%, transparent);
-    box-shadow: 0 0 22px 5px rgba(39, 151, 244, 0.38);
-    opacity: 0;
-    animation: scanOfficialLogo 1.65s 380ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation: followSignature 2.55s 420ms cubic-bezier(0.42, 0, 0.2, 1) forwards;
 }
 
 .intro-skip {
@@ -145,37 +117,29 @@ body.intro-active {
     font-weight: 800;
 }
 
-@keyframes revealOfficialLogo {
-    0% { opacity: 0; clip-path: inset(0 100% 0 0); transform: scale(0.96); }
-    12% { opacity: 1; }
-    100% { opacity: 1; clip-path: inset(0 0 0 0); transform: scale(1); }
+@keyframes formLogoSymbol {
+    0% { opacity: 0; clip-path: inset(0 100% 37% 0); filter: brightness(1.8) drop-shadow(0 0 12px rgba(0, 143, 199, 0.65)); }
+    8% { opacity: 1; }
+    75% { clip-path: inset(0 0 37% 0); filter: brightness(1.35) drop-shadow(0 0 12px rgba(0, 143, 199, 0.45)); }
+    100% { opacity: 1; clip-path: inset(0 0 37% 0); filter: brightness(1) drop-shadow(0 0 6px rgba(0, 143, 199, 0.16)); }
 }
 
-@keyframes settleOfficialLogo {
-    0% { filter: drop-shadow(0 0 22px rgba(14, 126, 217, 0.48)); }
-    100% { filter: drop-shadow(0 0 8px rgba(14, 126, 217, 0.18)); }
+@keyframes writeLogoSignature {
+    0% { opacity: 0; clip-path: inset(56% 100% 12% 0); }
+    4% { opacity: 1; }
+    100% { opacity: 1; clip-path: inset(56% 0 12% 0); }
 }
 
-@keyframes pulseOfficialLogo {
-    0% { opacity: 0; transform: scale(0.9); }
-    45% { opacity: 0.5; }
-    100% { opacity: 0; transform: scale(1.1); }
+@keyframes writeLogoSpecialty {
+    0% { opacity: 0; clip-path: inset(81% 100% 0 0); }
+    15% { opacity: 1; }
+    100% { opacity: 1; clip-path: inset(81% 0 0 0); }
 }
 
-@keyframes expandIntroRing {
-    0% { opacity: 0; transform: scale(0.72); }
-    38% { opacity: 1; }
-    100% { opacity: 0; transform: scale(1.08); }
-}
-
-@keyframes scanOfficialLogo {
-    0% { left: 5%; opacity: 0; }
-    12%, 86% { opacity: 1; }
-    100% { left: 95%; opacity: 0; }
-}
-
-@keyframes introLight {
-    to { transform: translateX(100%); }
+@keyframes followSignature {
+    0% { left: 7%; opacity: 0; }
+    5%, 91% { opacity: 1; }
+    100% { left: 93%; opacity: 0; }
 }
 
 a:focus-visible,
