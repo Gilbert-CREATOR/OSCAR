@@ -43,19 +43,19 @@ body.intro-active {
     color: #fff;
     opacity: 1;
     visibility: visible;
-    transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), visibility 900ms ease;
+    transition: opacity 720ms cubic-bezier(0.22, 1, 0.36, 1), visibility 720ms ease;
 }
 
 .brand-intro::before {
     position: absolute;
-    width: min(780px, 110vw);
+    width: min(720px, 105vw);
     aspect-ratio: 1;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 143, 199, 0.13) 0%, rgba(0, 78, 128, 0.06) 38%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 143, 199, 0.1) 0%, rgba(0, 78, 128, 0.045) 42%, transparent 70%);
     content: "";
     opacity: 0;
     transform: scale(0.78) translateZ(0);
-    animation: introAtmosphere 4.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: introAtmosphere 3.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .brand-intro.is-leaving {
@@ -67,10 +67,10 @@ body.intro-active {
 .intro-logo {
     position: relative;
     z-index: 1;
-    width: min(680px, 92vw);
+    width: min(820px, 88vw);
     opacity: 0;
-    transform: translate3d(0, 12px, 0) scale(0.985);
-    animation: introLogoArrival 900ms 100ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transform: translate3d(0, 8px, 0) scale(0.99);
+    animation: introLogoArrival 760ms 80ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .intro-emblem {
@@ -79,104 +79,115 @@ body.intro-active {
     aspect-ratio: 320 / 213;
 }
 
-.intro-part {
-    position: absolute;
-    inset: 0;
+.intro-vector {
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    opacity: 0;
-    filter: drop-shadow(0 0 8px rgba(0, 157, 220, 0.18));
+    overflow: visible;
+    filter: drop-shadow(0 0 7px rgba(0, 157, 220, 0.1));
     backface-visibility: hidden;
     transform: translateZ(0);
-    will-change: opacity, filter, -webkit-mask-size, mask-size;
+    will-change: filter, transform;
 }
 
-.intro-symbol {
-    clip-path: inset(0 0 37% 0);
-    -webkit-mask-image: linear-gradient(90deg, #000 80%, rgba(0, 0, 0, 0.78) 90%, transparent 100%);
-    -webkit-mask-position: left center;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: 1% 100%;
-    mask-image: linear-gradient(90deg, #000 80%, rgba(0, 0, 0, 0.78) 90%, transparent 100%);
-    mask-position: left center;
-    mask-repeat: no-repeat;
-    mask-size: 1% 100%;
-    animation: formLogoSymbol 2.75s 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.vector-blue {
+    color: #2188b5;
 }
 
-.intro-signature {
-    clip-path: inset(56% 0 12% 0);
-    -webkit-mask-image: linear-gradient(90deg, #000 84%, rgba(0, 0, 0, 0.75) 91%, transparent 100%);
-    -webkit-mask-position: left center;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: 1% 100%;
-    mask-image: linear-gradient(90deg, #000 84%, rgba(0, 0, 0, 0.75) 91%, transparent 100%);
-    mask-position: left center;
-    mask-repeat: no-repeat;
-    mask-size: 1% 100%;
-    animation: writeLogoSignature 3.05s 360ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.vector-gray {
+    color: #a7b6bc;
 }
 
-.intro-specialty {
-    clip-path: inset(81% 0 0 0);
-    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
-    -webkit-mask-position: left center;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: 1% 100%;
-    mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
-    mask-position: left center;
-    mask-repeat: no-repeat;
-    mask-size: 1% 100%;
-    animation: writeLogoSpecialty 1.55s 2.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+.vector-stroke {
+    fill: none;
+    stroke: currentColor;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.2px;
+}
+
+.vector-fill {
+    fill: currentColor;
+    opacity: 0;
+}
+
+.vector-symbol .vector-stroke {
+    animation: drawVectorSymbol 2.35s 120ms cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+.vector-symbol .vector-fill {
+    animation: fillVectorPart 700ms 1.8s ease-out forwards;
+}
+
+.vector-signature .vector-stroke {
+    stroke-width: 1.7px;
+    animation: drawVectorSignature 2.85s 280ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.vector-signature .vector-fill {
+    animation: fillVectorPart 750ms 2.35s ease-out forwards;
+}
+
+.vector-specialty .vector-stroke {
+    stroke-width: 1.5px;
+    animation: drawVectorSpecialty 1.25s 2.2s ease-out forwards;
+}
+
+.vector-specialty .vector-fill {
+    animation: fillVectorPart 600ms 2.8s ease-out forwards;
 }
 
 .intro-skip {
     position: absolute;
-    top: 24px;
-    right: 24px;
+    top: clamp(18px, 3vw, 30px);
+    right: clamp(18px, 3vw, 34px);
     z-index: 2;
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    border: 0;
     border-radius: 999px;
-    padding: 9px 16px;
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.78);
+    padding: 8px 4px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.58);
     cursor: pointer;
     font: inherit;
-    font-size: 12px;
-    font-weight: 800;
-    transition: color 220ms ease, border-color 220ms ease, background 220ms ease, transform 220ms ease;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 220ms ease, transform 220ms ease;
 }
 
 .intro-skip:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.1);
     color: #fff;
     transform: translateY(-1px);
 }
 
 .intro-skip:focus-visible {
-    outline: 2px solid rgba(104, 185, 255, 0.9);
-    outline-offset: 4px;
+    outline: 1px solid rgba(104, 185, 255, 0.7);
+    outline-offset: 5px;
 }
 
-@keyframes formLogoSymbol {
-    0% { opacity: 0; -webkit-mask-size: 1% 100%; mask-size: 1% 100%; filter: brightness(1.38) drop-shadow(0 0 16px rgba(0, 143, 199, 0.42)); }
-    6% { opacity: 1; }
-    78% { filter: brightness(1.12) drop-shadow(0 0 11px rgba(0, 143, 199, 0.3)); }
-    100% { opacity: 1; -webkit-mask-size: 112% 100%; mask-size: 112% 100%; filter: brightness(1) drop-shadow(0 0 6px rgba(0, 143, 199, 0.14)); }
+@keyframes drawVectorSymbol {
+    0% { stroke-dashoffset: 1; opacity: 0; }
+    5% { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
 }
 
-@keyframes writeLogoSignature {
-    0% { opacity: 0; -webkit-mask-size: 1% 100%; mask-size: 1% 100%; }
-    4% { opacity: 1; }
-    100% { opacity: 1; -webkit-mask-size: 112% 100%; mask-size: 112% 100%; }
+@keyframes drawVectorSignature {
+    0% { stroke-dashoffset: 1; opacity: 0; }
+    3% { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
 }
 
-@keyframes writeLogoSpecialty {
-    0% { opacity: 0; -webkit-mask-size: 1% 100%; mask-size: 1% 100%; }
-    12% { opacity: 1; }
-    100% { opacity: 1; -webkit-mask-size: 110% 100%; mask-size: 110% 100%; }
+@keyframes drawVectorSpecialty {
+    from { stroke-dashoffset: 1; opacity: 0; }
+    to { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes fillVectorPart {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes introLogoArrival {
