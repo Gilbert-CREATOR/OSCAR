@@ -92,10 +92,12 @@ body.intro-active {
 
 .vector-blue {
     color: #2188b5;
+    fill: currentColor;
 }
 
 .vector-gray {
     color: #a7b6bc;
+    fill: currentColor;
 }
 
 .vector-stroke {
@@ -113,30 +115,42 @@ body.intro-active {
     opacity: 0;
 }
 
-.vector-symbol .vector-stroke {
-    animation: drawVectorSymbol 2.35s 120ms cubic-bezier(0.45, 0, 0.2, 1) forwards;
+.round-skull,
+.round-monogram {
+    transform-box: view-box;
+    will-change: opacity, transform;
 }
 
-.vector-symbol .vector-fill {
-    animation: fillVectorPart 700ms 1.8s ease-out forwards;
+.round-skull {
+    clip-path: inset(0 48% 36% 0);
+    opacity: 0;
+    transform-origin: 34% 34%;
+    animation: roundSkullReveal 1.65s 100ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.round-monogram {
+    clip-path: inset(0 0 36% 40%);
+    opacity: 0;
+    transform: translate3d(-105px, 0, 0);
+    animation: roundMonogramReveal 1.25s 820ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .vector-signature .vector-stroke {
     stroke-width: 1.7px;
-    animation: drawVectorSignature 2.85s 280ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: drawVectorSignature 2s 1.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .vector-signature .vector-fill {
-    animation: fillVectorPart 750ms 2.35s ease-out forwards;
+    animation: fillVectorPart 650ms 2.65s ease-out forwards;
 }
 
 .vector-specialty .vector-stroke {
     stroke-width: 1.5px;
-    animation: drawVectorSpecialty 1.25s 2.2s ease-out forwards;
+    animation: drawVectorSpecialty 1s 2.5s ease-out forwards;
 }
 
 .vector-specialty .vector-fill {
-    animation: fillVectorPart 600ms 2.8s ease-out forwards;
+    animation: fillVectorPart 500ms 3.05s ease-out forwards;
 }
 
 .intro-skip {
@@ -168,10 +182,18 @@ body.intro-active {
     outline-offset: 5px;
 }
 
-@keyframes drawVectorSymbol {
-    0% { stroke-dashoffset: 1; opacity: 0; }
-    5% { opacity: 1; }
-    100% { stroke-dashoffset: 0; opacity: 1; }
+@keyframes roundSkullReveal {
+    0% { opacity: 0; transform: translate3d(145px, 10px, 0) scale(0.25) rotate(-24deg); }
+    52% { opacity: 1; transform: translate3d(145px, 0, 0) scale(1.08) rotate(3deg); }
+    72% { opacity: 1; transform: translate3d(145px, 0, 0) scale(0.96) rotate(-1deg); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1) rotate(0); }
+}
+
+@keyframes roundMonogramReveal {
+    0% { opacity: 0; transform: translate3d(-105px, 0, 0); }
+    18% { opacity: 1; }
+    72% { opacity: 1; transform: translate3d(9px, 0, 0); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 @keyframes drawVectorSignature {

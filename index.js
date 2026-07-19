@@ -27,7 +27,7 @@ if (brandIntro) {
         closeBrandIntro();
     } else {
         introSkip.focus();
-        window.setTimeout(closeBrandIntro, 3950);
+        window.setTimeout(closeBrandIntro, 4100);
     }
 }
 
