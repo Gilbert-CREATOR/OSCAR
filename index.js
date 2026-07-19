@@ -1,9 +1,39 @@
 const header = document.querySelector('.site-header');
+const brandIntro = document.getElementById('brandIntro');
+const introSkip = document.getElementById('introSkip');
+const pageRegions = document.querySelectorAll('.site-header, main, footer');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function closeBrandIntro() {
+    if (!brandIntro || brandIntro.classList.contains('is-leaving')) {
+        return;
+    }
+
+    brandIntro.classList.add('is-leaving');
+    document.body.classList.remove('intro-active');
+    pageRegions.forEach((region) => region.removeAttribute('inert'));
+
+    window.setTimeout(() => {
+        brandIntro.remove();
+    }, reduceMotion ? 0 : 700);
+}
+
+if (brandIntro) {
+    document.body.classList.add('intro-active');
+    pageRegions.forEach((region) => region.setAttribute('inert', ''));
+    introSkip.addEventListener('click', closeBrandIntro);
+
+    if (reduceMotion) {
+        closeBrandIntro();
+    } else {
+        introSkip.focus();
+        window.setTimeout(closeBrandIntro, 3400);
+    }
+}
+
 const animatedElements = document.querySelectorAll(
     '.hero-copy, .hero-visual, .hero-quote, .service-card, .portrait-panel, .content-panel, .locations-grid article, .testimonial-card, .contact-card'
 );
-
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if ('IntersectionObserver' in window && !reduceMotion) {
     const observer = new IntersectionObserver((entries) => {
