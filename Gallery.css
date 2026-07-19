@@ -69,19 +69,10 @@ a {
     font-weight: 900;
 }
 
-.brand-logo {
-    width: 64px;
-    height: 46px;
-    overflow: visible;
-    fill: none;
-    stroke: var(--blue);
-    stroke-width: 3.4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.brand-logo .brand-face {
-    stroke: var(--navy);
+.brand img {
+    width: 54px;
+    height: 42px;
+    object-fit: contain;
 }
 
 .case-nav-actions {
@@ -451,7 +442,7 @@ a {
         display: none;
     }
 
-    .brand-logo {
+    .brand img {
         width: 48px;
         height: 38px;
     }

@@ -65,79 +65,68 @@ body.intro-active {
 
 .intro-logo {
     position: relative;
-    width: min(620px, 88vw);
-    text-align: center;
+    width: min(720px, 92vw);
 }
 
-.intro-logo svg {
-    display: block;
+.intro-emblem {
+    position: relative;
+    display: grid;
+    min-height: min(62vw, 470px);
+    place-items: center;
+    isolation: isolate;
+}
+
+.intro-logo-image,
+.intro-logo-glow {
+    grid-area: 1 / 1;
     width: 100%;
-    max-height: 48vh;
-    margin: 0 auto;
-    overflow: visible;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    max-height: 58vh;
+    object-fit: contain;
 }
 
-.intro-anatomy path,
-.intro-monogram path {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-}
-
-.intro-anatomy path {
-    stroke: rgba(255, 255, 255, 0.88);
-    stroke-width: 4;
-    animation: drawIntro 1.45s ease forwards;
-}
-
-.intro-anatomy path:nth-child(2) { animation-delay: 140ms; }
-.intro-anatomy path:nth-child(3) { animation-delay: 320ms; }
-.intro-anatomy path:nth-child(4) { animation-delay: 440ms; }
-
-.intro-monogram path {
-    stroke: #1b8cff;
-    stroke-width: 7;
-    filter: drop-shadow(0 0 10px rgba(27, 140, 255, 0.42));
-    animation: drawIntro 1.35s 720ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-
-.intro-monogram path:last-child { animation-delay: 980ms; }
-
-.intro-accent {
-    fill: #1b8cff;
-    stroke: none;
+.intro-logo-image {
     opacity: 0;
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: introDot 420ms 1.9s ease-out forwards;
+    clip-path: inset(0 100% 0 0);
+    filter: drop-shadow(0 0 16px rgba(14, 126, 217, 0.3));
+    animation: revealOfficialLogo 1.65s 380ms cubic-bezier(0.65, 0, 0.35, 1) forwards,
+        settleOfficialLogo 700ms 2.05s ease forwards;
 }
 
-.intro-name,
-.intro-specialty {
+.intro-logo-glow {
     opacity: 0;
-    transform: translateY(14px);
-    animation: introWords 650ms 1.9s ease forwards;
+    filter: blur(18px) saturate(1.5);
+    transform: scale(0.9);
+    animation: pulseOfficialLogo 1.4s 1.15s ease-out forwards;
 }
 
-.intro-name {
-    margin-top: -20px;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(30px, 5vw, 52px);
-    font-style: italic;
-    letter-spacing: 0.02em;
+.intro-ring {
+    position: absolute;
+    z-index: -1;
+    width: min(430px, 62vw);
+    aspect-ratio: 1;
+    border: 1px solid rgba(20, 137, 224, 0.18);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.72);
+    animation: expandIntroRing 1.45s ease-out forwards;
 }
 
-.intro-specialty {
-    display: block;
-    margin-top: 4px;
-    color: #7fbdff;
-    font-size: clamp(10px, 1.7vw, 14px);
-    font-weight: 800;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    animation-delay: 2.15s;
+.intro-ring-two {
+    width: min(560px, 78vw);
+    border-color: rgba(255, 255, 255, 0.08);
+    animation-delay: 280ms;
+}
+
+.intro-scan {
+    position: absolute;
+    left: 5%;
+    top: 14%;
+    width: 2px;
+    height: 72%;
+    background: linear-gradient(180deg, transparent, #68b9ff 25%, #fff 50%, #68b9ff 75%, transparent);
+    box-shadow: 0 0 22px 5px rgba(39, 151, 244, 0.38);
+    opacity: 0;
+    animation: scanOfficialLogo 1.65s 380ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 .intro-skip {
@@ -156,18 +145,33 @@ body.intro-active {
     font-weight: 800;
 }
 
-@keyframes drawIntro {
-    to { stroke-dashoffset: 0; }
+@keyframes revealOfficialLogo {
+    0% { opacity: 0; clip-path: inset(0 100% 0 0); transform: scale(0.96); }
+    12% { opacity: 1; }
+    100% { opacity: 1; clip-path: inset(0 0 0 0); transform: scale(1); }
 }
 
-@keyframes introDot {
-    0% { opacity: 0; transform: scale(0); }
-    70% { opacity: 1; transform: scale(1.6); }
-    100% { opacity: 1; transform: scale(1); }
+@keyframes settleOfficialLogo {
+    0% { filter: drop-shadow(0 0 22px rgba(14, 126, 217, 0.48)); }
+    100% { filter: drop-shadow(0 0 8px rgba(14, 126, 217, 0.18)); }
 }
 
-@keyframes introWords {
-    to { opacity: 1; transform: translateY(0); }
+@keyframes pulseOfficialLogo {
+    0% { opacity: 0; transform: scale(0.9); }
+    45% { opacity: 0.5; }
+    100% { opacity: 0; transform: scale(1.1); }
+}
+
+@keyframes expandIntroRing {
+    0% { opacity: 0; transform: scale(0.72); }
+    38% { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.08); }
+}
+
+@keyframes scanOfficialLogo {
+    0% { left: 5%; opacity: 0; }
+    12%, 86% { opacity: 1; }
+    100% { left: 95%; opacity: 0; }
 }
 
 @keyframes introLight {
@@ -225,19 +229,10 @@ a {
     white-space: nowrap;
 }
 
-.brand-logo {
-    width: 64px;
-    height: 46px;
-    overflow: visible;
-    fill: none;
-    stroke: var(--blue);
-    stroke-width: 3.4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.brand-logo .brand-face {
-    stroke: var(--navy);
+.brand img {
+    width: 54px;
+    height: 42px;
+    object-fit: contain;
 }
 
 nav ul {
@@ -1046,7 +1041,7 @@ footer {
         white-space: nowrap;
     }
 
-    .brand-logo {
+    .brand img {
         width: 70px;
         height: 54px;
     }
@@ -1278,7 +1273,7 @@ footer {
         gap: 8px;
     }
 
-    .brand-logo {
+    .brand img {
         width: 64px;
         height: 50px;
     }
